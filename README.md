@@ -1,154 +1,160 @@
-# Nike E-commerce Store
+<div align="center">
+  <br />
+    <a href="https://youtu.be/fZdTYswuZjU" target="_blank">
+      <img src="public/readme/hero.webp" alt="Project Banner">
+    </a>
+  <br />
 
-A modern e-commerce application built with Next.js, TypeScript, TailwindCSS, and Drizzle ORM, featuring a Nike product catalog.
+  <div>
+    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6"/>
+    <img alt="Static Badge" src="https://img.shields.io/badge/Devin AI-FFF?style=for-the-badge&logo=devin&logoColor=white">
+    <img src="https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+    <br/>
+    <img src="https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=next.js&logoColor=white">
+    <img src="https://img.shields.io/badge/-Better Auth-black?style=for-the-badge&logoColor=white&logo=betterauth&color=black"/>
+    <img src="https://img.shields.io/badge/-Drizzle-black?style=for-the-badge&logoColor=C5F74F&logo=drizzle&color=black"/>
 
-## Features
+  </div>
 
-- 🛍️ **Product Catalog**: Browse Nike products with detailed information
-- 🎨 **Modern UI**: Beautiful, responsive design with TailwindCSS
-- 🗄️ **Database**: PostgreSQL with Neon and Drizzle ORM
-- 🚀 **Performance**: Built with Next.js 15 and App Router
-- 📱 **Responsive**: Mobile-first design approach
-- 🛒 **Shopping Cart**: Add products to cart with Zustand state management
+  <h3 align="center">Nike Ecommerce w/ Devin AI</h3>
 
-## Tech Stack
+   <div align="center">
+     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/watch?v=XUkNR-JfHwo" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
+    </div>
+</div>
 
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: TailwindCSS
-- **Database**: Neon PostgreSQL
-- **ORM**: Drizzle ORM
-- **State Management**: Zustand
-- **Authentication**: Better Auth (configured but not implemented)
-- **Icons**: Heroicons
+## 📋 <a name="table">Table of Contents</a>
 
-## Prerequisites
+1. ✨ [Introduction](#introduction)
+2. ⚙️ [Tech Stack](#tech-stack)
+3. 🔋 [Features](#features)
+4. 🤸 [Quick Start](#quick-start)
+5. 🔗 [Assets](#links)
+6. 🚀 [More](#more)
 
-- Node.js 18+ 
-- npm or yarn
-- Neon PostgreSQL database account
+## <a name="introduction">✨ Introduction</a>
 
-## Getting Started
+Nike-style eCommerce built with Devin AI, Next.js, Drizzle ORM, and Better Auth. In this project, you’ll master prompting as Devin helps generate sleek product pages powered by Next.js 15, TypeScript, and TailwindCSS. The backend runs on Neon PostgreSQL with Drizzle ORM, authentication is handled with Better Auth, and Zustand manages state — all packaged in a clean, modular UI to help you ship faster.
 
-### 1. Clone the repository
+If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
+
+<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+
+## <a name="tech-stack">⚙️ Tech Stack</a>
+
+- **[Better Auth](https://www.better-auth.com/)** is a framework-agnostic authentication and authorization library for TypeScript. It provides built-in support for email and password authentication, social sign-on (Google, GitHub, Apple, and more), and multi-factor authentication, simplifying user authentication and account management.
+
+- **[Devin AI](https://docs.devin.ai/get-started/devin-intro)** is an autonomous AI software engineer by Cognition Labs that independently plans, writes, debugs, and deploys full applications from natural language prompts. It integrates with tools like Slack, Linear, and Jira to manage tasks and pull requests, and learns new technologies on the fly by reading documentation.
+
+- **[Drizzle ORM](https://orm.drizzle.team/)** is a lightweight and performant TypeScript ORM designed with developer experience in mind. It provides a seamless interface between application code and database operations while maintaining high performance and reliability.
+
+- **[Neon](https://neon.com/)** is a fully managed, serverless PostgreSQL database platform. It offers features like instant provisioning, autoscaling, and database branching, enabling developers to build scalable applications without managing infrastructure.
+
+- **[Next.js](https://nextjs.org/docs)** is a powerful React framework for building full-stack web applications. It simplifies development with features like server-side rendering, static site generation, and API routes, enabling developers to focus on building products and shipping quickly.
+
+- **[TailwindCSS](https://tailwindcss.com/)** is a utility-first CSS framework that allows developers to build custom, responsive designs quickly without leaving their HTML. It provides pre-defined classes for layout, typography, colors, and more.
+
+- **[TypeScript](https://www.typescriptlang.org/)** is a superset of JavaScript that adds static typing, providing better tooling, code quality, and error detection for developers. It is ideal for building large-scale applications and enhances the development experience.
+
+- **[Zustand](https://zustand-demo.pmnd.rs)** is a minimal, hook-based state management library for React. It lets you manage global state with zero boilerplate, no context providers, and excellent performance through selective state subscriptions.
+
+## <a name="features">🔋 Features</a>
+
+👉 **Landing Page**: A fast, engaging homepage that introduces your brand and products with smooth animations and clear calls to action.
+
+👉 **Product Listing Page**: Browse all products with filters, sorting, and real-time availability—powered by Devin AI-generated content for dynamic updates.
+
+👉 **Product Details Page**: Detailed product info, images, and reviews with AI-enhanced descriptions to help customers make confident buying decisions.
+
+👉 **Auth Pages**: Secure and seamless user signup, login, and password recovery using Better Auth, ensuring smooth access without backend hassles.
+
+And many more, including code architecture and reusability.
+
+## <a name="quick-start">🤸 Quick Start</a>
+
+Follow these steps to set up the project locally on your machine.
+
+**Prerequisites**
+
+Make sure you have the following installed on your machine:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+
+**Cloning the Repository**
 
 ```bash
-git clone <your-repo-url>
-cd nike-ecommerce
+git clone https://github.com/JavaScript-Mastery-Pro/e-commerce.git
+cd e-commerce
 ```
 
-### 2. Install dependencies
+**Installation**
+
+Install the project dependencies using npm:
 
 ```bash
 npm install
 ```
 
-### 3. Environment Setup
+**Set Up Environment Variables**
 
-Copy the example environment file and configure your database:
-
-```bash
-cp env.example .env.local
-```
-
-Update `.env.local` with your actual database credentials:
+Create a new file named `.env` in the root of your project and add the following content:
 
 ```env
 # Database
 DATABASE_URL="postgresql://username:password@host:port/database"
 
-# Auth
-AUTH_SECRET="your-secret-key-here"
-AUTH_URL="http://localhost:3000"
+# Better Auth
+BETTER_AUTH_SECRET="your-secret-key-here"
+BETTER_AUTH_URL="http://localhost:3000"
 
-# Neon Database (replace with your actual credentials)
-NEON_DATABASE_URL="postgresql://username:password@host:port/database"
+# GitHub OAuth (optional)
+GITHUB_CLIENT_ID=""
+GITHUB_CLIENT_SECRET=""
+
+# Google OAuth (optional)
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
 ```
 
-### 4. Database Setup
+Replace the placeholder values with your credentials. You can get these by signing up at: [**NeonDB**](https://neon.com/), [**Better-Auth**](https://www.better-auth.com/).
 
-Generate and run database migrations:
-
-```bash
-# Generate migration files
-npm run db:generate
-
-# Run migrations (you'll need to manually run the SQL in your database)
-npm run db:migrate
-
-# Seed the database with sample Nike products
-npm run db:seed
-```
-
-### 5. Start the development server
+**Running the Project**
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
-## Database Schema
-
-The application includes a `products` table with the following structure:
-
-- `id`: Primary key
-- `name`: Product name
-- `description`: Product description
-- `price`: Product price
-- `category`: Product category (e.g., Sneakers, Athletic Wear)
-- `brand`: Brand name
-- `imageUrl`: Product image URL
-- `sizes`: Available sizes array
-- `colors`: Available colors array
-- `inStock`: Stock availability
-- `rating`: Product rating
-- `reviewCount`: Number of reviews
-- `createdAt`: Creation timestamp
-- `updatedAt`: Last update timestamp
-
-## Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run db:generate` - Generate database migrations
-- `npm run db:migrate` - Run database migrations
-- `npm run db:seed` - Seed database with sample data
-- `npm run db:studio` - Open Drizzle Studio
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
-├── app/                 # Next.js App Router
-│   ├── api/            # API routes
-│   │   └── products/   # Products API endpoint
-│   └── page.tsx        # Homepage
-├── components/          # React components
-│   ├── Header.tsx      # Navigation header
-│   ├── ProductCard.tsx # Individual product display
-│   └── ProductGrid.tsx # Products grid layout
-├── db/                 # Database configuration
-│   ├── index.ts        # Database connection
-│   ├── schema.ts       # Database schema
-│   └── seed.ts         # Sample data
-└── store/              # State management
-    └── useStore.ts     # Zustand store
+├── app/
+│   ├── api/auth/[...all]/route.ts  # Better Auth API routes
+│   └── page.tsx                    # Homepage
+├── lib/
+│   ├── auth/
+│   │   └── index.ts               # Better Auth configuration
+│   └── db/
+│       ├── index.ts               # Database connection
+│       └── schema.ts              # Database schema
+└── store/
+    ├── auth.ts                    # Authentication state
+    └── cart.ts                    # Shopping cart state
 ```
 
-## Contributing
+## 🗄️ Database Schema
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+The application includes the following tables:
 
-## License
+- **users**: User accounts and profiles
+- **sessions**: User sessions for Better Auth
+- **accounts**: OAuth accounts and credentials
+- **verifications**: Email verification tokens
+- **products**: Product catalog
+- **orders**: Customer orders
+- **order_items**: Individual items in orders
 
-This project is licensed under the MIT License.
-
-## Support
-
-For support, please open an issue in the GitHub repository.
