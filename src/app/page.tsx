@@ -1,5 +1,6 @@
 import React from "react";
-import {Card} from "@/components";
+import { Card } from "@/components";
+// import {getCurrentUser} from "@/lib/auth/actions";
 
 const products = [
     {
@@ -9,7 +10,7 @@ const products = [
         meta: "6 Colour",
         price: 149.99,
         imageSrc: "/shoes/shoe-1.jpg",
-        badge: {label: "New", tone: "orange" as const},
+        badge: { label: "New", tone: "orange" as const },
     },
     {
         id: 2,
@@ -18,7 +19,7 @@ const products = [
         meta: "4 Colour",
         price: 129.99,
         imageSrc: "/shoes/shoe-2.webp",
-        badge: {label: "Hot", tone: "red" as const},
+        badge: { label: "Hot", tone: "red" as const },
     },
     {
         id: 3,
@@ -27,7 +28,7 @@ const products = [
         meta: "6 Colour",
         price: 159.99,
         imageSrc: "/shoes/shoe-3.webp",
-        badge: {label: "Trending", tone: "green" as const},
+        badge: { label: "Trending", tone: "green" as const },
     },
     {
         id: 4,
@@ -39,7 +40,11 @@ const products = [
     },
 ];
 
-const Home = () => {
+const Home = async () => {
+    // const user = await getCurrentUser();
+
+    // console.log('USER:', user);
+
     return (
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <section aria-labelledby="latest" className="pb-12">
@@ -56,6 +61,7 @@ const Home = () => {
                             imageSrc={p.imageSrc}
                             price={p.price}
                             badge={p.badge}
+                            href={`/products/${p.id}`}
                         />
                     ))}
                 </div>
