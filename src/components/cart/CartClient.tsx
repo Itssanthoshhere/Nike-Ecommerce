@@ -74,9 +74,9 @@ export default function CartClient({ initialCart, onCheckout, onRemove, onUpdate
               <hr className="my-2 border-light-300" />
               <div className="flex items-center justify-between font-medium"><span>Total</span><span>${(subtotal + 2).toFixed(2)}</span></div>
             </div>
-            <form action={onCheckout} className="mt-6">
-              <button type="submit" className="w-full rounded-full bg-dark-900 px-6 py-3 text-white hover:bg-dark-800">Proceed to Checkout</button>
-            </form>
+            {/*<form action={onCheckout} className="mt-6">*/}
+              <button type="submit" className="w-full mt-6 rounded-full bg-dark-900 px-6 py-3 text-white hover:bg-dark-800">Proceed to Checkout</button>
+            {/*</form>*/}
           </div>
         </aside>
       </div>

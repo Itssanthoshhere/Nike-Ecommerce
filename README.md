@@ -1,14 +1,15 @@
 <div align="center">
   <br />
-    <a href="" target="_blank">
-      <img src="public/readme/hero.webp" alt="Project Banner">
-    </a>
+  <a href="https://nike-ecommerce.vercel.app/" target="_blank">
+    <img src="public/readme/hero.webp" alt="Project Banner">
+  </a>
   <br />
 
   <div>
     <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6"/>
     <img alt="Static Badge" src="https://img.shields.io/badge/Devin AI-FFF?style=for-the-badge&logo=devin&logoColor=white">
     <img src="https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+<img src="https://img.shields.io/badge/-Neon_Postgres-008CFF?style=for-the-badge&logo=postgresql&logoColor=white" />
     <br/>
     <img src="https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=next.js&logoColor=white">
     <img src="https://img.shields.io/badge/-Better Auth-black?style=for-the-badge&logoColor=white&logo=betterauth&color=black"/>
@@ -17,13 +18,22 @@
 
 
   </div>
+<div align="center">
+     <h3>🛍️ Nike E-commerce w/ Devin AI</h3>
+    A full-stack modern eCommerce app featuring <b>product pages, cart & checkout with Stripe, authentication, PostgreSQL/Drizzle ORM backend, Zustand state management, and a clean Tailwind UI</b>.<br/>
+    <i>Built step by step with Devin AI and Next.js 15 for seamless development.</i>
+  </div>
 
-<h3 align="center">Nike Ecommerce w/ Devin AI</h3>
+  <br />
 
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/watch?v=XUkNR-JfHwo" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
+  <a href="https://nike-ecommerce.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/🚀%20Live%20Demo-brightgreen?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+  </a>
+  <br />
+
 </div>
+
+---
 
 ## 📋 <a name="table">Table of Contents</a>
 
@@ -31,7 +41,11 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
+5. 📁 [Project Structure](#project-structure)
+6. 🗄️ [Database Schema](#database-schema)
+7. 🔗 [Contacts](#contacts)
 
+---
 
 ## <a name="introduction">✨ Introduction</a>
 
@@ -39,6 +53,8 @@ Nike-style eCommerce built with Devin AI, Next.js, Drizzle ORM, and Better Auth.
 prompting as Devin helps generate sleek product pages powered by Next.js 15, TypeScript, and TailwindCSS. The backend
 runs on Neon PostgreSQL with Drizzle ORM, authentication is handled with Better Auth, and Zustand manages state — all
 packaged in a clean, modular UI to help you ship faster.
+
+---
 
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
@@ -76,6 +92,24 @@ packaged in a clean, modular UI to help you ship faster.
   manage global state with zero boilerplate, no context providers, and excellent performance through selective state
   subscriptions.
 
+---
+
+
+### 🎨 UI/UX Design
+
+The entire interface of **Velvet Pour – GSAP Cocktail Website** is crafted to deliver a smooth, immersive, and visually
+stunning experience. From scroll-triggered sections to animated carousels and video-synced storytelling, every element
+follows a **modern, elegant, and responsive design system** that enhances both interactivity and aesthetics.
+
+<p align="center">
+  <a href="https://www.figma.com/design/5Jq2VXwhdkFlmrN0g5Urkq/Nike-Ecommerce-Website?node-id=2-2&t=Q6kJNFU21DTRMWDI-1" target="_blank">
+    <img src="https://img.shields.io/badge/View%20Figma%20Design-blue?style=for-the-badge&logo=figma&logoColor=white" alt="Figma Link" />
+  </a>
+</p>
+
+---
+
+
 ## <a name="features">🔋 Features</a>
 
 👉 **Landing Page**: A fast, engaging homepage that introduces your brand and products with smooth animations and clear
@@ -92,6 +126,9 @@ access without backend hassles.
 
 And many more, including code architecture and reusability.
 
+---
+
+
 ## <a name="quick-start">🤸 Quick Start</a>
 
 Follow these steps to set up the project locally on your machine.
@@ -107,8 +144,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/JavaScript-Mastery-Pro/e-commerce.git
-cd e-commerce
+git clone https://github.com/Itssanthoshhere/Nike-Ecommerce.git
+cd Nike-Ecommerce
 ```
 
 **Installation**
@@ -151,7 +188,9 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
-## 📁 Project Structure
+---
+
+### <a name="project-structure">📁 Project Structure</a>
 
 ```
 src/
@@ -169,7 +208,9 @@ src/
     └── cart.ts                    # Shopping cart state
 ```
 
-## 🗄️ Database Schema
+---
+
+### <a name="database-schema">🗄️ Database Schema</a>
 
 The application includes the following tables:
 
@@ -180,4 +221,22 @@ The application includes the following tables:
 - **products**: Product catalog
 - **orders**: Customer orders
 - **order_items**: Individual items in orders
+
+---
+
+### <a name="contacts">🔗 Contacts</a>
+
+Feel free to connect with me:
+
+* GitHub: [Itssanthoshhere](https://github.com/Itssanthoshhere)
+* LinkedIn: [Santhosh VS](https://www.linkedin.com/in/thesanthoshvs/)
+
+---
+
+#### ⭐️ Show Your Support
+
+If you liked this project, **give it a ⭐** and share it with others!
+
+---
+
 
