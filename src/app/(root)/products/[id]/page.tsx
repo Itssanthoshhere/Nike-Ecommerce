@@ -2,7 +2,7 @@ import Link from "next/link";
 import {Suspense} from "react";
 import {Card, CollapsibleSection, ProductGallery, SizePicker} from "@/components";
 import {Heart, ShoppingBag, Star} from "lucide-react";
-import ColorSwatches from "@/components/ColorSwatches";
+// import ColorSwatches from "@/components/ColorSwatches";
 import {
     getProduct,
     getProductReviews,
