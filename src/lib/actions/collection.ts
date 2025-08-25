@@ -84,6 +84,7 @@ export async function getCollectionProducts(slug: string): Promise<{
         .groupBy(products.id, products.name, genders.label)
         .orderBy(desc(products.createdAt));
 
+
     const out: CollectionProductItem[] = rows.map((r) => ({
         id: r.id,
         title: r.title,
