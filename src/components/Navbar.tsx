@@ -1,12 +1,14 @@
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import {useEffect, useState} from "react";
-import { useCartStore } from "@/store/cart.store";
-import { getCart } from "@/lib/actions/cart";
-import { useRouter, useSearchParams } from "next/navigation";
-import { withUpdatedParams } from "@/lib/utils/query";
+import {useCartStore} from "@/store/cart.store";
+import {getCart} from "@/lib/actions/cart";
+import {useRouter, useSearchParams} from "next/navigation";
+import {withUpdatedParams} from "@/lib/utils/query";
+import {Menu, X} from "lucide-react"; // 👈 icons for hamburger
 
 const NAV_LINKS = [
     {label: "Men", href: "/products?gender=men"},
@@ -18,13 +20,14 @@ const NAV_LINKS = [
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
-    const { count, setCart } = useCartStore();
+    const {count, setCart} = useCartStore();
     const router = useRouter();
     const searchParams = useSearchParams();
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        getCart().then(setCart).catch(() => {});
+        getCart().then(setCart).catch(() => {
+        });
     }, [setCart]);
 
     useEffect(() => {
@@ -34,7 +37,9 @@ export default function Navbar() {
 
     function submitSearch(e: React.FormEvent) {
         e.preventDefault();
-        const next = withUpdatedParams("/products", "", { search: search.trim() || undefined });
+        const next = withUpdatedParams("/products", "", {
+            search: search.trim() || undefined,
+        });
         router.push(next);
         setOpen(false);
     }
@@ -45,10 +50,19 @@ export default function Navbar() {
                 className="flex items-center justify-between h-16 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8"
                 aria-label="Primary"
             >
+                {/* Logo */}
                 <Link href="/" aria-label="Nike Home" className="flex items-center">
-                    <Image src="/logo.svg" alt="Nike" width={28} height={28} priority className="invert"/>
+                    <Image
+                        src="/logo.svg"
+                        alt="Nike"
+                        width={28}
+                        height={28}
+                        priority
+                        className="invert"
+                    />
                 </Link>
 
+                {/* Desktop Menu */}
                 <ul className="items-center hidden gap-8 md:flex">
                     {NAV_LINKS.map((l) => (
                         <li key={l.href}>
@@ -62,6 +76,7 @@ export default function Navbar() {
                     ))}
                 </ul>
 
+                {/* Desktop Search + Cart */}
                 <div className="items-center hidden gap-6 md:flex">
                     <form onSubmit={submitSearch} className="hidden gap-2 md:flex">
                         <input
@@ -72,28 +87,32 @@ export default function Navbar() {
                             className="h-9 w-56 rounded-full border border-light-300 px-3 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-dark-500]"
                         />
                     </form>
-                    <Link href="/cart" className="transition-colors text-body text-dark-900 hover:text-dark-700">
+                    <Link
+                        href="/cart"
+                        className="transition-colors text-body text-dark-900 hover:text-dark-700"
+                    >
                         My Cart ({count})
                     </Link>
                 </div>
 
+                {/* Mobile Hamburger */}
                 <button
                     type="button"
-                    className="inline-flex items-center justify-center p-2 rounded-md md:hidden"
+                    className="inline-flex items-center justify-center p-2 rounded-md md:hidden focus:outline-none"
                     aria-controls="mobile-menu"
                     aria-expanded={open}
                     onClick={() => setOpen((v) => !v)}
                 >
-                    <span className="sr-only">Toggle navigation</span>
-                    <span className="mb-1 block h-0.5 w-6 bg-dark-900"></span>
-                    <span className="mb-1 block h-0.5 w-6 bg-dark-900"></span>
-                    <span className="block h-0.5 w-6 bg-dark-900"></span>
+                    {open ? <X size={28} className="text-dark-900"/> : <Menu size={28} className="text-dark-900"/>}
                 </button>
             </nav>
 
+            {/* Mobile Menu */}
             <div
                 id="mobile-menu"
-                className={`border-t border-light-300 md:hidden ${open ? "block" : "hidden"}`}
+                className={`md:hidden transition-all duration-300 ${
+                    open ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+                }`}
             >
                 <ul className="px-4 py-3 space-y-2">
                     {NAV_LINKS.map((l) => (
@@ -117,7 +136,9 @@ export default function Navbar() {
                                 className="w-full rounded-full border border-light-300 px-3 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-dark-500]"
                             />
                         </form>
-                        <Link href="/cart" className="ml-3 text-body">My Cart ({count})</Link>
+                        <Link href="/cart" className="ml-3 text-body">
+                            My Cart ({count})
+                        </Link>
                     </li>
                 </ul>
             </div>
