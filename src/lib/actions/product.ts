@@ -50,21 +50,21 @@ export async function getAllProducts(filters: NormalizedProductFilters): Promise
     conds.push(or(ilike(products.name, pattern), ilike(products.description, pattern))!);
   }
 
-  if (filters.genderSlugs.length) {
+  if (filters?.genderSlugs?.length) {
     conds.push(inArray(genders.slug, filters.genderSlugs));
   }
 
-  if (filters.brandSlugs.length) {
+  if (filters?.brandSlugs?.length) {
     conds.push(inArray(brands.slug, filters.brandSlugs));
   }
 
-  if (filters.categorySlugs.length) {
+  if (filters?.categorySlugs?.length) {
     conds.push(inArray(categories.slug, filters.categorySlugs));
   }
 
-  const hasSize = filters.sizeSlugs.length > 0;
-  const hasColor = filters.colorSlugs.length > 0;
-  const hasPrice = !!(filters.priceMin !== undefined || filters.priceMax !== undefined || filters.priceRanges.length);
+  const hasSize = filters?.sizeSlugs?.length || 0 > 0;
+  const hasColor = filters?.colorSlugs?.length || 0 > 0;
+  const hasPrice = !!(filters?.priceMin !== undefined || filters.priceMax !== undefined || filters?.priceRanges?.length);
 
   const variantConds: SQL[] = [];
   if (hasSize) {

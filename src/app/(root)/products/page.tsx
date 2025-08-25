@@ -1,8 +1,8 @@
-import {Card} from "@/components";
+import { Card } from "@/components";
 import Filters from "@/components/Filters";
 import Sort from "@/components/Sort";
-import {parseFilterParams} from "@/lib/utils/query";
-import {getAllProducts} from "@/lib/actions/product";
+import { parseFilterParams } from "@/lib/utils/query";
+import { getAllProducts } from "@/lib/actions/product";
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -14,7 +14,7 @@ export default async function ProductsPage({
     const sp = await searchParams;
 
     const parsed = parseFilterParams(sp);
-    const {products, totalCount} = await getAllProducts(parsed);
+    const { products, totalCount } = await getAllProducts(parsed);
 
     const activeBadges: string[] = [];
     (sp.gender ? (Array.isArray(sp.gender) ? sp.gender : [sp.gender]) : []).forEach((g) =>
@@ -34,7 +34,7 @@ export default async function ProductsPage({
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <header className="flex items-center justify-between py-6">
                 <h1 className="text-heading-3 text-dark-900">New ({totalCount})</h1>
-                <Sort/>
+                <Sort />
             </header>
 
             {activeBadges.length > 0 && (
@@ -51,7 +51,7 @@ export default async function ProductsPage({
             )}
 
             <section className="grid grid-cols-1 gap-6 md:grid-cols-[240px_1fr]">
-                <Filters/>
+                <Filters />
                 <div>
                     {products.length === 0 ? (
                         <div className="rounded-lg border border-light-300 p-8 text-center">

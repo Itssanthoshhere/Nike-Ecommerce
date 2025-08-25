@@ -2,6 +2,7 @@ import Link from "next/link";
 import {Suspense} from "react";
 import {Card, CollapsibleSection, ProductGallery, SizePicker} from "@/components";
 import {Heart, ShoppingBag, Star} from "lucide-react";
+import ColorSwatches from "@/components/ColorSwatches";
 import {
     getProduct,
     getProductReviews,
@@ -188,6 +189,7 @@ export default async function ProductDetailPage({params}: { params: Promise<{ id
                         )}
                     </div>
 
+                    <ColorSwatches productId={product.id} variants={galleryVariants}/>
                     <SizePicker/>
 
                     <div className="flex flex-col gap-3">

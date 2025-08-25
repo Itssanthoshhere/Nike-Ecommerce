@@ -2,7 +2,7 @@
 
 import {useState} from "react";
 import Link from "next/link";
-// import SocialProviders from "./SocialProviders";
+import SocialProviders from "./SocialProviders";
 import {useRouter} from "next/navigation";
 
 type Props = {
@@ -47,7 +47,7 @@ export default function AuthForm({mode, onSubmit}: Props) {
                 </p>
             </div>
 
-            {/*<SocialProviders variant={mode} />*/}
+            <SocialProviders variant={mode}/>
 
             <div className="flex items-center gap-4">
                 <hr className="h-px w-full border-0 bg-light-300"/>
