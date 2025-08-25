@@ -8,8 +8,11 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-    title: "Nike",
+    title: "Nike E-Commerce",
     description: "An e-commerce platform for Nike shoes",
+    icons: {
+        icon: "/favicon.svg", // instead of .ico
+    },
 };
 
 export default function RootShell({
