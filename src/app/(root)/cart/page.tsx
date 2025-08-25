@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getCart, proceedToCheckout, removeCartItem, updateCartItem } from "@/lib/actions/cart";
 import CartClient from "@/components/cart/CartClient";
 
