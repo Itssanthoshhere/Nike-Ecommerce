@@ -71,17 +71,17 @@ export async function getAllProducts(filters: NormalizedProductFilters): Promise
     variantConds.push(inArray(productVariants.sizeId, db
       .select({ id: sizes.id })
       .from(sizes)
-      .where(inArray(sizes.slug, filters.sizeSlugs))));
+      .where(inArray(sizes.slug, filters.sizeSlugs ?? []))));
   }
   if (hasColor) {
     variantConds.push(inArray(productVariants.colorId, db
       .select({ id: colors.id })
       .from(colors)
-      .where(inArray(colors.slug, filters.colorSlugs))));
+      .where(inArray(colors.slug, filters.colorSlugs ?? []))));
   }
   if (hasPrice) {
     const priceBounds: SQL[] = [];
-    if (filters.priceRanges.length) {
+    if (filters.priceRanges?.length) {
       for (const [min, max] of filters.priceRanges) {
         const subConds: SQL[] = [];
         if (min !== undefined) {
@@ -127,7 +127,10 @@ export async function getAllProducts(filters: NormalizedProductFilters): Promise
         .where(
           inArray(
             productVariants.colorId,
-            db.select({ id: colors.id }).from(colors).where(inArray(colors.slug, filters.colorSlugs))
+            db
+              .select({ id: colors.id })
+              .from(colors)
+              .where(inArray(colors.slug, filters.colorSlugs ?? []))
           )
         )
         .as("pi")
@@ -158,8 +161,8 @@ export async function getAllProducts(filters: NormalizedProductFilters): Promise
       ? desc(sql`max(${variantJoin.price})`)
       : desc(products.createdAt);
 
-  const page = Math.max(1, filters.page);
-  const limit = Math.max(1, Math.min(filters.limit, 60));
+  const page = Math.max(1, <number>filters.page);
+  const limit = Math.max(1, Math.min(<number>filters.limit, 60));
   const offset = (page - 1) * limit;
 
   const rows = await db
