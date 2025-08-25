@@ -1,7 +1,7 @@
 "use server";
 
-import {db} from "@/lib/db";
-import {desc, eq, sql} from "drizzle-orm";
+import { db } from "@/lib/db";
+import { and, desc, eq, sql } from "drizzle-orm";
 import {
     collections,
     productCollections,
@@ -24,15 +24,13 @@ export async function getCollections(): Promise<CollectionListItem[]> {
             id: collections.id,
             name: collections.name,
             slug: collections.slug,
-            productCount: sql<number>`count(
-            ${productCollections.productId}
-            )`.as("cnt"),
+            productCount: sql<number>`count(${productCollections.productId})`.as("cnt"),
         })
         .from(collections)
         .leftJoin(productCollections, eq(productCollections.collectionId, collections.id))
         .groupBy(collections.id, collections.name, collections.slug)
         .orderBy(desc(collections.createdAt));
-    return rows.map((r) => ({id: r.id, name: r.name, slug: r.slug, productCount: Number(r.productCount)}));
+    return rows.map((r) => ({ id: r.id, name: r.name, slug: r.slug, productCount: Number(r.productCount) }));
 }
 
 export type CollectionProductItem = {
@@ -43,23 +41,17 @@ export type CollectionProductItem = {
     subtitle?: string | null;
 };
 
-export async function getCollectionProducts(slug: string): Promise<{
-    name: string;
-    products: CollectionProductItem[]
-} | null> {
+export async function getCollectionProducts(slug: string): Promise<{ name: string; products: CollectionProductItem[] } | null> {
     const col = await db.select().from(collections).where(eq(collections.slug, slug)).limit(1);
     if (!col.length) return null;
     const c = col[0]!;
 
     const v = db
-        .select({
-            productId: productVariants.productId, price: sql<number>`${productVariants.price}
-            ::numeric`.as("price")
-        })
+        .select({ productId: productVariants.productId, price: sql<number>`${productVariants.price}::numeric`.as("price") })
         .from(productVariants)
         .as("v");
     const pi = db
-        .select({productId: productImages.productId, url: productImages.url})
+        .select({ productId: productImages.productId, url: productImages.url })
         .from(productImages)
         .as("pi");
 
@@ -67,12 +59,8 @@ export async function getCollectionProducts(slug: string): Promise<{
         .select({
             id: products.id,
             title: products.name,
-            minPrice: sql<number | null>`min(
-            ${v.price}
-            )`,
-            imageUrl: sql<string | null>`max(
-            ${pi.url}
-            )`,
+            minPrice: sql<number | null>`min(${v.price})`,
+            imageUrl: sql<string | null>`max(${pi.url})`,
             subtitle: genders.label,
         })
         .from(products)
@@ -84,7 +72,6 @@ export async function getCollectionProducts(slug: string): Promise<{
         .groupBy(products.id, products.name, genders.label)
         .orderBy(desc(products.createdAt));
 
-
     const out: CollectionProductItem[] = rows.map((r) => ({
         id: r.id,
         title: r.title,
@@ -92,6 +79,5 @@ export async function getCollectionProducts(slug: string): Promise<{
         price: r.minPrice === null ? null : Number(r.minPrice),
         subtitle: r.subtitle ? `${r.subtitle} Shoes` : null,
     }));
-    return {name: c.name, products: out};
+    return { name: c.name, products: out };
 }
-
