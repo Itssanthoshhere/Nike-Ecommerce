@@ -1,11 +1,9 @@
-"use client";
-
 import { Suspense } from "react";
-import ContactPage from "./ContactPage"; // move your JSX into ContactPage.tsx
+import ContactPage from "@/components/ContactPage";
 
-export default function ContactWrapper() {
+export default function Contact() {
     return (
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<div>Loading contact page...</div>}>
             <ContactPage />
         </Suspense>
     );
