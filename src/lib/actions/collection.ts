@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { and, desc, eq, sql } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import {
     collections,
     productCollections,
