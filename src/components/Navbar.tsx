@@ -5,6 +5,8 @@ import Link from "next/link";
 import {useEffect, useState} from "react";
 import { useCartStore } from "@/store/cart.store";
 import { getCart } from "@/lib/actions/cart";
+import { useRouter, useSearchParams } from "next/navigation";
+import { withUpdatedParams } from "@/lib/utils/query";
 
 const NAV_LINKS = [
     {label: "Men", href: "/products?gender=men"},
@@ -17,10 +19,25 @@ const NAV_LINKS = [
 export default function Navbar() {
     const [open, setOpen] = useState(false);
     const { count, setCart } = useCartStore();
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         getCart().then(setCart).catch(() => {});
     }, [setCart]);
+
+    useEffect(() => {
+        const q = searchParams?.get("search") || "";
+        setSearch(q);
+    }, [searchParams]);
+
+    function submitSearch(e: React.FormEvent) {
+        e.preventDefault();
+        const next = withUpdatedParams("/products", "", { search: search.trim() || undefined });
+        router.push(next);
+        setOpen(false);
+    }
 
     return (
         <header className="sticky top-0 z-50 bg-light-100">
@@ -46,9 +63,15 @@ export default function Navbar() {
                 </ul>
 
                 <div className="items-center hidden gap-6 md:flex">
-                    <button className="transition-colors text-body text-dark-900 hover:text-dark-700">
-                        Search
-                    </button>
+                    <form onSubmit={submitSearch} className="hidden gap-2 md:flex">
+                        <input
+                            type="search"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            placeholder="Search"
+                            className="h-9 w-56 rounded-full border border-light-300 px-3 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-dark-500]"
+                        />
+                    </form>
                     <Link href="/cart" className="transition-colors text-body text-dark-900 hover:text-dark-700">
                         My Cart ({count})
                     </Link>
@@ -85,8 +108,16 @@ export default function Navbar() {
                         </li>
                     ))}
                     <li className="flex items-center justify-between pt-2">
-                        <button className="text-body">Search</button>
-                        <Link href="/cart" className="text-body">My Cart ({count})</Link>
+                        <form onSubmit={submitSearch} className="flex-1">
+                            <input
+                                type="search"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                placeholder="Search products"
+                                className="w-full rounded-full border border-light-300 px-3 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-dark-500]"
+                            />
+                        </form>
+                        <Link href="/cart" className="ml-3 text-body">My Cart ({count})</Link>
                     </li>
                 </ul>
             </div>
