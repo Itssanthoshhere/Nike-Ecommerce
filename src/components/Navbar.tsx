@@ -25,19 +25,19 @@ export default function Navbar() {
     return (
         <header className="sticky top-0 z-50 bg-light-100">
             <nav
-                className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+                className="flex items-center justify-between h-16 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8"
                 aria-label="Primary"
             >
                 <Link href="/" aria-label="Nike Home" className="flex items-center">
                     <Image src="/logo.svg" alt="Nike" width={28} height={28} priority className="invert"/>
                 </Link>
 
-                <ul className="hidden items-center gap-8 md:flex">
+                <ul className="items-center hidden gap-8 md:flex">
                     {NAV_LINKS.map((l) => (
                         <li key={l.href}>
                             <Link
                                 href={l.href}
-                                className="text-body text-dark-900 transition-colors hover:text-dark-700"
+                                className="transition-colors text-body text-dark-900 hover:text-dark-700"
                             >
                                 {l.label}
                             </Link>
@@ -45,18 +45,18 @@ export default function Navbar() {
                     ))}
                 </ul>
 
-                <div className="hidden items-center gap-6 md:flex">
-                    <button className="text-body text-dark-900 transition-colors hover:text-dark-700">
+                <div className="items-center hidden gap-6 md:flex">
+                    <button className="transition-colors text-body text-dark-900 hover:text-dark-700">
                         Search
                     </button>
-                    <Link href="/cart" className="text-body text-dark-900 transition-colors hover:text-dark-700">
+                    <Link href="/cart" className="transition-colors text-body text-dark-900 hover:text-dark-700">
                         My Cart ({count})
                     </Link>
                 </div>
 
                 <button
                     type="button"
-                    className="inline-flex items-center justify-center rounded-md p-2 md:hidden"
+                    className="inline-flex items-center justify-center p-2 rounded-md md:hidden"
                     aria-controls="mobile-menu"
                     aria-expanded={open}
                     onClick={() => setOpen((v) => !v)}
@@ -72,7 +72,7 @@ export default function Navbar() {
                 id="mobile-menu"
                 className={`border-t border-light-300 md:hidden ${open ? "block" : "hidden"}`}
             >
-                <ul className="space-y-2 px-4 py-3">
+                <ul className="px-4 py-3 space-y-2">
                     {NAV_LINKS.map((l) => (
                         <li key={l.href}>
                             <Link

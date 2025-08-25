@@ -1,4 +1,4 @@
-import { getCart, removeCartItem, updateCartItem } from "@/lib/actions/cart";
+import { getCart, proceedToCheckout, removeCartItem, updateCartItem } from "@/lib/actions/cart";
 import CartClient from "@/components/cart/CartClient";
 
 export default async function CartPage() {
