@@ -13,7 +13,7 @@ export default function ContactPage() {
                 Have questions? Send us a message and we’ll get back to you.
             </p>
 
-            {/* Show query param if exists */}
+            {/* Only shows if query param ?ref=something is present */}
             {ref && (
                 <p className="mt-2 text-sm text-dark-500">
                     You came from: <strong>{ref}</strong>
