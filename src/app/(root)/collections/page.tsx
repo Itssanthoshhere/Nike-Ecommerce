@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getCollections } from "@/lib/actions/collection";
 
 export default async function CollectionsPage() {

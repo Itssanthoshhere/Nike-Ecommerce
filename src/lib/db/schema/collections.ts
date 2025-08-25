@@ -51,3 +51,4 @@ export const selectProductCollectionSchema = insertProductCollectionSchema.exten
 });
 export type InsertProductCollection = z.infer<typeof insertProductCollectionSchema>;
 export type SelectProductCollection = z.infer<typeof selectProductCollectionSchema>;
+

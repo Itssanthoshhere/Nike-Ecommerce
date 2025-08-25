@@ -13,9 +13,9 @@ type Props = {
   onUpdate: (cartItemId: string, update: { quantity?: number; variantId?: string }) => Promise<GetCartResult>;
 };
 
-export default function CartClient({ initialCart, onCheckout, onRemove, onUpdate }: Props) {
-  const { items, subtotal, count, setCart, removeItemOptimistic, updateItemQtyOptimistic } = useCartStore();
-  const [isPending, startTransition] = useTransition();
+export default function CartClient({ initialCart, onRemove, onUpdate }: Props) {
+  const { items, subtotal, setCart, removeItemOptimistic, updateItemQtyOptimistic } = useCartStore();
+  const [startTransition] = useTransition();
 
   useEffect(() => {
     setCart(initialCart);
