@@ -1,3 +1,4 @@
+
 {
   "name": "e-commerce",
   "version": "0.1.0",
@@ -12,6 +13,10 @@
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:seed": "tsx src/lib/db/seed.ts"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "10.x"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
