@@ -1,21 +1,23 @@
+
 "use client";
 
 import Image from "next/image";
 import {useEffect, useTransition} from "react";
 import {Trash2} from "lucide-react";
 import {useCartStore} from "@/store/cart.store";
-import type {GetCartResult} from "@/lib/actions/cart";
-import { Button } from "@/components/ui/button";
-
+import {
+    updateCartItem,
+    removeCartItem,
+    clearCart,
+    type GetCartResult,
+} from "@/lib/actions/cart";
+import {Button} from "@/components/ui/button";
 
 type Props = {
     initialCart: GetCartResult;
-    onCheckout: () => Promise<void>;
-    onRemove: (cartItemId: string) => Promise<GetCartResult>;
-    onUpdate: (cartItemId: string, update: { quantity?: number; variantId?: string }) => Promise<GetCartResult>;
 };
 
-export default function CartClient({initialCart, onRemove, onUpdate}: Props) {
+export default function CartClient({initialCart}: Props) {
     const {items, subtotal, setCart, removeItemOptimistic, updateItemQtyOptimistic} = useCartStore();
     const [isPending, startTransition] = useTransition();
 
@@ -25,12 +27,16 @@ export default function CartClient({initialCart, onRemove, onUpdate}: Props) {
 
     const handleRemove = (id: string) => {
         removeItemOptimistic(id);
-        startTransition(async () => setCart(await onRemove(id)));
+        startTransition(async () => setCart(await removeCartItem(id)));
     };
 
     const handleQty = (id: string, qty: number) => {
         updateItemQtyOptimistic(id, qty);
-        startTransition(async () => setCart(await onUpdate(id, {quantity: qty})));
+        startTransition(async () => setCart(await updateCartItem(id, {quantity: qty})));
+    };
+
+    const handleClearCart = () => {
+        startTransition(async () => setCart(await clearCart()));
     };
 
     return (
@@ -78,25 +84,37 @@ export default function CartClient({initialCart, onRemove, onUpdate}: Props) {
                         <h2 className="mb-4 text-lg font-semibold">Summary</h2>
                         <div className="space-y-3 text-sm">
                             <div className="flex items-center justify-between">
-                                <span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
+                                <span>Subtotal</span>
+                                <span>${subtotal.toFixed(2)}</span>
+                            </div>
                             <div className="flex items-center justify-between">
-                                <span>Estimated Delivery & Handling</span><span>$2.00</span></div>
+                                <span>Estimated Delivery & Handling</span>
+                                <span>$2.00</span>
+                            </div>
                             <hr className="my-2 border-light-300"/>
                             <div className="flex items-center justify-between font-medium">
-                                <span>Total</span><span>${(subtotal + 2).toFixed(2)}</span></div>
+                                <span>Total</span>
+                                <span>${(subtotal + 2).toFixed(2)}</span>
+                            </div>
                         </div>
+                        {/*<Button className="w-full mt-4" onClick={() => alert("Checkout feature coming soon! 🚀")}>*/}
+                        {/*    Proceed to Checkout*/}
+                        {/*</Button>*/}
                         <Button
                             className="w-full mt-4"
                             onClick={() => alert("Checkout feature coming soon! 🚀")}
+                            disabled={isPending} // Disable checkout while updating
                         >
                             Proceed to Checkout
                         </Button>
-
+                        {items.length > 0 && (
+                            <Button className="w-full mt-2 bg-red-600 hover:bg-red-700" onClick={handleClearCart}>
+                                Clear Cart
+                            </Button>
+                        )}
                     </div>
                 </aside>
             </div>
         </div>
     );
 }
-
-
