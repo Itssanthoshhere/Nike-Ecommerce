@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <a href="https://nike-ecommerce.vercel.app/" target="_blank">
+  <a href="https://nike-ecommerce-black.vercel.app/" target="_blank">
     <img src="public/readme/hero.webp" alt="Project Banner">
   </a>
   <br />
@@ -26,7 +26,7 @@
 
   <br />
 
-  <a href="https://nike-ecommerce.vercel.app/" target="_blank">
+  <a href="https://nike-ecommerce-black.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/🚀%20Live%20Demo-brightgreen?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
   </a>
   <br />
