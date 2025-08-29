@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {Card} from "@/components";
-import {getAllProducts} from "@/lib/actions/product";
+import { Card } from "@/components";
+import { getAllProducts } from "@/lib/actions/product";
 
 const Home = async () => {
-    const {products} = await getAllProducts({limit: 6});
+    const { products } = await getAllProducts({ limit: 6 });
 
     return (
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -26,7 +26,7 @@ const Home = async () => {
                     <div className="max-w-xl">
                         <p className="px-11 mt-32 text-sm font-semibold text-red-500">Bold & Sporty</p>
                         <h1 className="px-11 mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
-                            Style That Moves <br/> With You.
+                            Style That Moves <br /> With You.
                         </h1>
                         <p className="px-11 mt-4 text-lg text-gray-600">
                             Not just style. Not just comfort. Footwear that effortlessly moves
@@ -59,9 +59,9 @@ const Home = async () => {
 
                         return (
                             <div key={p.id} className="relative">
-                <span className="absolute left-2 top-2 rounded bg-red-500 px-2 py-1 text-xs font-semibold text-white">
-                  {badges[i]}
-                </span>
+                                <span className="absolute left-2 top-2 rounded bg-red-500 px-2 py-1 text-xs font-semibold text-white">
+                                    {badges[i]}
+                                </span>
                                 <Card
                                     title={p.name}
                                     subtitle={p.subtitle ?? ""}

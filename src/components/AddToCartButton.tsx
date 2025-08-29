@@ -37,5 +37,3 @@ export default function AddToCartButton({ productId, variantIdsByColorIndex, var
     </button>
   );
 }
-
-

@@ -1,7 +1,6 @@
-
 "use client";
 
-import {useState} from "react";
+import { useState } from "react";
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -11,19 +10,22 @@ export default function ContactPage() {
     });
     const [submitted, setSubmitted] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({...formData, [e.target.name]: e.target.value});
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        // You can later integrate API or email sending logic here
         setSubmitted(true);
-        setFormData({name: "", email: "", message: ""});
+        setFormData({ name: "", email: "", message: "" });
     };
 
     return (
         <main className="max-w-3xl px-4 py-8 mx-auto sm:px-6 lg:px-8">
-            <h1 className="text-heading-2 text-dark-900">Contact</h1>
+            <h1 className="text-heading-2 text-dark-900">Contact Us</h1>
             <p className="mt-2 text-body text-dark-700">
                 Have questions? Send us a message and we’ll get back to you.
             </p>
@@ -73,7 +75,9 @@ export default function ContactPage() {
             </form>
 
             {submitted && (
-                <p className="mt-4 text-body text-dark-700">Form submitted successfully!</p>
+                <p className="mt-4 text-body text-dark-700">
+                    Form submitted successfully!
+                </p>
             )}
         </main>
     );

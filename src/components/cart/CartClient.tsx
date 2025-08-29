@@ -13,10 +13,6 @@ import {
 } from "@/lib/actions/cart";
 import {Button} from "@/components/ui/button";
 
-// type Props = {
-//     initialCart: GetCartResult;
-// };
-
 type Props = {
     initialCart: GetCartResult;
     onCheckout: () => Promise<void>; // <--- this must be passed

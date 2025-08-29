@@ -57,5 +57,3 @@ export const useCartStore = create<CartState>()(
     clear: () => set({ cartId: null, items: [], subtotal: 0, count: 0 }),
   }))
 );
-
-

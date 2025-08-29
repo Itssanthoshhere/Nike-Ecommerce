@@ -116,32 +116,32 @@ export async function getAllProducts(filters: NormalizedProductFilters): Promise
     .as("v");
   const imagesJoin = hasColor
     ? db
-        .select({
-          productId: productImages.productId,
-          url: productImages.url,
-          rn: sql<number>`row_number() over (partition by ${productImages.productId} order by ${productImages.isPrimary} desc, ${productImages.sortOrder} asc)`.as("rn"),
-        })
-        .from(productImages)
-        .innerJoin(productVariants, eq(productVariants.id, productImages.variantId))
-        .where(
-          inArray(
-            productVariants.colorId,
-            db
-              .select({ id: colors.id })
-              .from(colors)
-              .where(inArray(colors.slug, filters.colorSlugs ?? []))
-          )
+      .select({
+        productId: productImages.productId,
+        url: productImages.url,
+        rn: sql<number>`row_number() over (partition by ${productImages.productId} order by ${productImages.isPrimary} desc, ${productImages.sortOrder} asc)`.as("rn"),
+      })
+      .from(productImages)
+      .innerJoin(productVariants, eq(productVariants.id, productImages.variantId))
+      .where(
+        inArray(
+          productVariants.colorId,
+          db
+            .select({ id: colors.id })
+            .from(colors)
+            .where(inArray(colors.slug, filters.colorSlugs ?? []))
         )
-        .as("pi")
+      )
+      .as("pi")
     : db
-        .select({
-          productId: productImages.productId,
-          url: productImages.url,
-          rn: sql<number>`row_number() over (partition by ${productImages.productId} order by ${productImages.isPrimary} desc, ${productImages.sortOrder} asc)`.as("rn"),
-        })
-        .from(productImages)
-        .where(isNull(productImages.variantId))
-        .as("pi")
+      .select({
+        productId: productImages.productId,
+        url: productImages.url,
+        rn: sql<number>`row_number() over (partition by ${productImages.productId} order by ${productImages.isPrimary} desc, ${productImages.sortOrder} asc)`.as("rn"),
+      })
+      .from(productImages)
+      .where(isNull(productImages.variantId))
+      .as("pi")
 
 
   const baseWhere = conds.length ? and(...conds) : undefined;
@@ -157,8 +157,8 @@ export async function getAllProducts(filters: NormalizedProductFilters): Promise
     filters.sort === "price_asc"
       ? asc(sql`min(${variantJoin.price})`)
       : filters.sort === "price_desc"
-      ? desc(sql`max(${variantJoin.price})`)
-      : desc(products.createdAt);
+        ? desc(sql`max(${variantJoin.price})`)
+        : desc(products.createdAt);
 
   const page = Math.max(1, <number>filters.page);
   const limit = Math.max(1, Math.min(<number>filters.limit, 60));
@@ -308,26 +308,26 @@ export async function getProduct(productId: string): Promise<FullProduct | null>
     updatedAt: head.productUpdatedAt,
     brand: head.brandId
       ? {
-          id: head.brandId,
-          name: head.brandName!,
-          slug: head.brandSlug!,
-          logoUrl: head.brandLogoUrl ?? null,
-        }
+        id: head.brandId,
+        name: head.brandName!,
+        slug: head.brandSlug!,
+        logoUrl: head.brandLogoUrl ?? null,
+      }
       : null,
     category: head.categoryId
       ? {
-          id: head.categoryId,
-          name: head.categoryName!,
-          slug: head.categorySlug!,
-          parentId: null,
-        }
+        id: head.categoryId,
+        name: head.categoryName!,
+        slug: head.categorySlug!,
+        parentId: null,
+      }
       : null,
     gender: head.genderId
       ? {
-          id: head.genderId,
-          label: head.genderLabel!,
-          slug: head.genderSlug!,
-        }
+        id: head.genderId,
+        label: head.genderLabel!,
+        slug: head.genderSlug!,
+      }
       : null,
   };
 
@@ -350,19 +350,19 @@ export async function getProduct(productId: string): Promise<FullProduct | null>
         createdAt: head.productCreatedAt,
         color: r.colorId
           ? {
-              id: r.colorId,
-              name: r.colorName!,
-              slug: r.colorSlug!,
-              hexCode: r.colorHex!,
-            }
+            id: r.colorId,
+            name: r.colorName!,
+            slug: r.colorSlug!,
+            hexCode: r.colorHex!,
+          }
           : null,
         size: r.sizeId
           ? {
-              id: r.sizeId,
-              name: r.sizeName!,
-              slug: r.sizeSlug!,
-              sortOrder: r.sizeSortOrder!,
-            }
+            id: r.sizeId,
+            name: r.sizeName!,
+            slug: r.sizeSlug!,
+            sortOrder: r.sizeSortOrder!,
+          }
           : null,
       });
     }
